@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="p-3 mb-2 bg-primary text-white" >Registro</h2>
+<style>
+h2{
+    text-shadow:1px 1px 7px black
+}
+</style>
+
+<body>
+
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <label for="nombre"></label>
+            <br>
+            <input type="text" name="NombreEstudiante" required placeholder="Ingresa tu nombre">
+            <br>
+
+
+            <h2 class="text-primary p-3 mb-2 bg-success text-white">Notas de laboratorios</h2>
+
+
+            <label for="Nota lab1"></label>
+            <br>
+
+            <input type="text" name="lab1" required placeholder="Ingresa tu nota L1">
+            <br>
+
+            <label for="Nota lab2"></label>
+            <br>
+            <input type="text" name="lab2" required placeholder="Ingresa tu nota L2">
+            <br>
+
+            <label for="Nota lab3"></label>
+            <br>
+            <input type="text" name="lab3" required placeholder="Ingresa tu nota L3">
+            <br>
+
+
+            <h2 class="text-primary p-3 mb-2 bg-success text-white">Notas de parciales</h2>
+
+
+
+            <label for="Nota par1"></label>
+            <br>
+
+            <input type="text" name="par1" required placeholder="Ingresa tu nota P1">
+            <br>
+
+            <label for="Nota par2"></label>
+            <br>
+            <input type="text" name="par2" required placeholder="Ingresa tu nota P2">
+            <br>
+
+            <label for="Nota par3"></label>
+            <br>
+            <input type="text" name="par3" required placeholder="Ingresa tu nota P3">
+            <br>
+            <button>Siguiente</button>
+        }
+
+
+
+
+
+    </div>
+</body>
+

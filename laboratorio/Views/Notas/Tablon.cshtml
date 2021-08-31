@@ -1,0 +1,85 @@
+﻿@model IEnumerable<laboratorio.Models.TblNotasEstudiante>
+
+@{
+    ViewBag.Title = "Tablon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="p-3 mb-2 bg-success text-white">Tablon</h2>
+<style>
+h2{
+    text-shadow:1px 1px 7px black
+}
+</style>
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lab1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lab2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lab3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.par1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.par2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.par3)
+        </th>
+        <th>
+            Nota Final
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEstudiante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lab1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lab2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lab3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.par1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.par2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.par3)
+            </td>
+            <td>
+                @{
+                    float lab1 = Convert.ToSingle(item.lab1);
+                    float lab2 = Convert.ToSingle(item.lab2);
+                    float lab3 = Convert.ToSingle(item.lab3);
+                    float par1 = Convert.ToSingle(item.par1);
+                    float par2 = Convert.ToSingle(item.par2);
+                    float par3 = Convert.ToSingle(item.par3);
+                    double _NotaFinal = ((((lab1 * 0.4) + (par1 * 0.6)) / 3) + (((lab2 * 0.4) + (par2 * 0.6)) / 3) + (((lab3 * 0.4) + (par3 * 0.6)) / 3));
+                    decimal NotaFinal = Convert.ToDecimal(Math.Truncate(_NotaFinal * 100) / 100);
+                }
+                @NotaFinal
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Regresar", "Index", "Notas")

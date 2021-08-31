@@ -1,0 +1,93 @@
+﻿@model laboratorio.Models.TblNotasEstudiante
+
+@{
+    ViewBag.Title = "Resultado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    float lab1 = Convert.ToSingle(Model.lab1);
+    float lab2 = Convert.ToSingle(Model.lab2);
+    float lab3 = Convert.ToSingle(Model.lab3);
+    float par1 = Convert.ToSingle(Model.par1);
+    float par2 = Convert.ToSingle(Model.par2);
+    float par3 = Convert.ToSingle(Model.par3);
+    double _NotaFinal = ((((lab1 * 0.4) + (par1 * 0.6)) / 3) + (((lab2 * 0.4) + (par2 * 0.6)) / 3) + (((lab3 * 0.4) + (par3 * 0.6)) / 3));
+    decimal NotaFinal = Convert.ToDecimal(Math.Truncate(_NotaFinal * 100) / 100);
+}
+
+<h2 class="p-3 mb-2 bg-primary text-white">Resultado</h2>
+<style>
+    h2 {
+        text-shadow: 1px 1px 7px black
+    }
+</style>
+
+<div>
+    <h4>Notas del Estudiante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreEstudiante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreEstudiante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lab1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lab1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lab2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lab2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lab3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lab3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.par1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.par1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.par2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.par2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.par3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.par3)
+        </dd>
+        <dt>
+            Nota Final
+        </dt>
+        <dd>
+            @NotaFinal
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Listado de notas", "Tablon")
+</p>
